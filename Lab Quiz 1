@@ -1,0 +1,67 @@
+# Question 1
+
+
+ ## A student tries to load a data-visualization package and receives one of these errors:
+
+Python: ModuleNotFoundError: No module named 'matplotlib'
+
+R: Error in library(plotly): there is no package called 'plotly'
+
+question_1 = ("What is the common cause and the correct first action?"
+    "- The dataset is missing; download the data first.\n"
+    "- The package is not installed in the active Python environment or R library; "
+    "install it and then load it again.\n"
+    "- The visualization code contains an arithmetic error.\n"
+
+def user_question_1 (answer):
+    if answer.strip() == (
+        "The package is not installed in the active Python environment or R library; "
+        "install it and then load it again."
+    ):
+        return "Correct! Install the package in the active environment or R library, then load it again."
+    return "Incorrect. The missing package is the cause."
+
+print (user_question_1("The package is not installed in the active Python environment or R library; install it and then load it again."))
+
+# Question 2
+
+## Given the following list of parcel areas: 1200, 850, 2300, 1750, 950.
+
+Use a for loop or list comprehension in Python or vectorized filtering in R to keep only parcel areas that are at least 1,000 square feet, then calculate their sum. What numeric total does your code produce? Enter only the number. Make sure to use code to answer this question.
+
+question_2 = "Calculate the sum of parcel areas that are at least 1,000 square feet."
+
+import re
+
+markdown_text = """
+- Parcel 1: 1200 sq ft
+- Parcel 2: 850 sq ft
+- Parcel 3: 2300 sq ft
+- Parcel 4: 1750 sq ft
+- Parcel 5: 950 sq ft
+"""
+
+numbers = re.findall(r"\d+", markdown_text)
+parcel_areas = [int(num) for num in numbers[1::2]]
+eligible_areas = [area for area in parcel_areas if area >= 1000]
+
+print(sum(eligible_areas))
+
+# Question 3
+
+## Define a function named calculate_parking_fee(hours) using these rules:
+
+- For 2 hours or fewer, charge $2 per hour.
+- For more than 2 hours, charge $4 for the first 2 hours plus $3 for each additional hour.
+
+Call calculate_parking_fee(5). What numeric value does the function return? Enter only the number. Make sure to use code to answer this question.
+
+question_3 = "What numeric value does the parking fee function return?"
+
+def calculate_parking_fee(hours):
+    if hours <= 2:
+            return hours * 2
+    return 4 + (hours - 2) * 3
+
+result = calculate_parking_fee(5)
+print(result)
